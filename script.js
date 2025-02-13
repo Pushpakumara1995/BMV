@@ -22,10 +22,49 @@ function handleNoClick() {
     yesButton.style.fontSize = `${currentSize * 1.5}px`;
 }
 
+// function handleYesClick() {
+//     // Send an email notification using FormSubmit
+//     fetch("https://formsubmit.co/pushpakumaraspotify@gmail.com", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({
+//             name: "Valentine Project",
+//             message: "Someone clicked YES! ❤️"
+//         })
+//     });
+
+//     // Show floating hearts animation
+//     for (let i = 0; i < 20; i++) {
+//         createHeart();
+//     }
+
+//     // Redirect after a short delay
+//     setTimeout(() => {
+//         window.location.href = "yes_page.html";
+//     }, 3000);
+// }
+
 function handleYesClick() {
+    // Replace with your bot token and chat ID
+    const botToken = "8142455895:AAFLimcfw_dwWIHI_R21zGLNKObiV0iPAl0";
+    const chatId = "1014630101";
+
+    // Send a message to Telegram
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            chat_id: chatId,
+            text: "🚀 Someone clicked YES on your Valentine's page! ❤️",
+        })
+    });
+
+    // Show floating hearts animation
     for (let i = 0; i < 20; i++) {
         createHeart();
     }
+
+    // Redirect after 3 seconds
     setTimeout(() => {
         window.location.href = "yes_page.html";
     }, 1000);
